@@ -1,0 +1,102 @@
+<div class="m-5 card p-4">
+  <form #upload="ngForm">
+    <h3 class="text-primary fs-3">1. Upload an image</h3>
+    <h5 class="text-danger blockquote-footer mt-1 fs-5"> Select an image from your device( Max: 20 MB Image extensions Allowed toresize it (.png , .jped, .jpg and .tiff) ):</h5>
+    <div>
+      <input class="form-control form-control-lg " id="formFileLg" type="file" name="uploadedImage" (change)="handleUpload($event)" required/>
+      <h3 class="text-primary fs-3 mt-3">2. Choose Rotate Images Options  </h3>
+      <h5 class="text-danger blockquote-footer mt-1  fs-5"> Simple or Advanced Setting </h5>
+      <section class="mb-3">
+        <mat-button-toggle-group appearance="legacy"  #group="matButtonToggleGroup" class="fs-3 p-2 rounded ms-4">
+          <mat-button-toggle  [(ngModel)]="selection.simple" name="simple" #simple="ngModel" (click)="handleSimple()">Simple</mat-button-toggle>
+          <mat-button-toggle  [(ngModel)]="selection.advanced" name="advanced" #advanced="ngModel" (click)="handleAdvanced()" >Advanced</mat-button-toggle>
+        </mat-button-toggle-group>
+      </section>
+      <div *ngIf="simpleoptions" class="card  col-11 m-auto">
+          <mat-grid-list cols="4" rowHeight="2:1">
+            <mat-grid-tile>
+              <input type="image" src="../../../assets/img_45.png" [(ngModel)]="angles.angle"  name="angle" (click)="rotate(45)">
+              <p class="text-danger card p-2 fs-4">45&deg;</p>
+            </mat-grid-tile>
+          <mat-grid-tile>
+            <input type="image" src="../../../assets/img_90.png" [(ngModel)]="angles.angle"  name="angle" (click)="rotate(90)">
+            <p class="text-danger card p-2 fs-4">90&deg;</p>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <input type="image" src="../../../assets/img_180.png" [(ngModel)]="angles.angle"  name="angle" (click)="rotate(180)">
+            <p class="text-danger card p-2 fs-4">180&deg;</p>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <input type="image" src="../../../assets/img_360.png" [(ngModel)]="angles.angle"  name="angle" (click)="rotate(360)">
+            <p class="text-danger card p-2 fs-4">360&deg;</p>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <input type="image" src="../../../assets/img_-90.png" [(ngModel)]="angles.angle"  name="angle" (click)="rotate(-90)">
+            <p class="text-danger card p-2 fs-4">-90&deg;</p>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <input type="image" src="../../../assets/img_-180.png" [(ngModel)]="angles.angle" name="angle" (click)="rotate(-180)">
+            <p class="text-danger card p-2 fs-4">-180&deg;</p>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <img src="../../../assets/img_value.png" >
+            <div class="ms-3 col-5">
+            <input type="number" class="form-control form-control-lg" [(ngModel)]="angles.angle" placeholder="90" width="30"  name="angle" required max="360">
+          </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <div class="d-flex justify-content-center mb-3">
+          <button *ngIf="isUploaded" class="btn border-primary border-3 mt-3 text-center text-primary fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)" [disabled]="!upload.valid"> <fa-icon [icon]="faRotate" class="text-primary"></fa-icon> Rotate</button>
+        </div>
+      </div>
+      <div *ngIf="advancedoptions" >
+        <h3 class="text-danger fs-5 mt-2 ms-5">I. Set the angle.  </h3>
+        <div class="d-flex mt-4 ms-5 ">
+          <div class="col-1">
+            <input type="number" class="form-control form-control-lg  me-2 mb-2 fs-4 " [(ngModel)]="angles.angle" placeholder="90"#angle="ngModel"  name="angle" required max="360">
+          </div>
+          <mat-slider thumbLabel  class="card col-7 ms-2 mb-4 text-black" step="1" min="0" max="360" aria-label="units" [(ngModel)]="angles.angle" #angle="ngModel"  name="angle"></mat-slider>
+        </div>
+        <h3 class="text-danger fs-5 mt-2 ms-5">II. Set the Background Color or you can ignore it.  </h3>
+        <div class="d-flex justify-content-center ms-5">
+          <input type="color"  class="form-control form-control-lg fs-4 ms-2 w-50" [(ngModel)]="colors.color" #color="ngModel" [ngModelOptions]="{standalone: true}">
+         </div>
+
+
+
+        <div class="d-flex justify-content-center mb-3">
+          <button class="btn border-primary border-3 mt-3 text-center text-primary fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)" [disabled]="!upload.valid"> <fa-icon [icon]="faRotate" class="text-primary"></fa-icon> Rotate</button>
+        </div>
+      </div>
+
+
+
+
+
+    <h3 class="text-primary fs-3">3. Preview</h3>
+    <h5 class="text-danger blockquote-footer mt-1  fs-5"> Preview of the image you uploaded and resized  </h5>
+    <div *ngIf="isSubmitted">
+
+
+
+
+
+      <div class="container d-flex justify-content-center">
+          <img src="../../assets/RotateImages/{{this.imageAfterRotate}}" class="img-fluid card image" alt="{{this.imageAfterRotate}}">
+        <div class="middle">
+          <a href="../../assets/RotateImages/{{this.imageAfterRotate}}" class="text-decoration-none" download><div class="text p-3 text-white bg-primary rounded-pill"><fa-icon [icon]="faArrowAltCircleDown" class="text-white"></fa-icon> Download Image</div></a>
+        </div>
+      </div>
+
+      <div class="btn border-success border-3 fs-5 w-100 p-4 text-start mt-3" >
+        <h3>Image Uploaded Successfully and Rotated Successfully</h3>
+        <div class="bg-success p-2 text-dark bg-opacity-10 text-center">To download your rotated  Image  <a href="../../assets/RotateImages/{{this.imageAfterRotate}}" download> Click here <fa-icon [icon]="faImage" ></fa-icon></a></div>
+      </div>
+    </div>
+  </div>
+
+  </form>
+
+
+</div>
+
