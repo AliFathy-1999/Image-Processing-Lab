@@ -57,9 +57,6 @@ class Image{
             const myimagePath = path.join(__dirname,`${req.file.path}`);
             const imageP = "./frontend/src/assets/RotateImages/";
             const imgAngle = Number.parseInt(req.body.angle);
-            const red = Number.parseInt(req.body.red);
-            const green = Number.parseInt(req.body.green);
-            const blue = Number.parseInt(req.body.blue);
             const color =  req.body.color;
             const imageAfterRotate = `${myFileName}-rotateWithAngle-${imgAngle}degree${ext}`
             const RotateImage = await sharp(myimagePath)
@@ -89,6 +86,8 @@ class Image{
     static ImageTransparency = async (req,res) =>{
         const mypath = `./frontend/src/assets/uploads/${req.file.originalname}`;
         const outputImagePath=`./frontend/src/assets/TransparencyImages/TransparencyDoneOn-${req.file.originalname}`
+        const imageAfterTransparency = `TransparencyDoneOn-${req.file.originalname}`
+        const imageName=`TransparencyDoneOn-${req.file.originalname}`
         const formData = new FormData();
         formData.append('size', 'auto');
         formData.append('type', 'auto');
@@ -116,7 +115,10 @@ class Image{
             res.status(200).send({
                 apiStatus: true,
                 mypath:mypath,
+                data: req.file,
                 outputImagePath:outputImagePath,
+                imageName:imageName,
+                imageAfterTransparency:imageAfterTransparency,
                 message: "Image Uploaded and Transparent Successfully"
             })
         }

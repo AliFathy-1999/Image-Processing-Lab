@@ -20,6 +20,7 @@ import { BlurImagesComponent } from './imageOperations/blur-images/blur-images.c
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { RotateoptionsComponent } from './rotateoptions/rotateoptions.component';
 import { ImageTransparencyComponent } from './imageOperations/image-transparency/image-transparency.component';
+import { BackgroundRemoverComponent } from './imageOperations/background-remover/background-remover.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { ImageTransparencyComponent } from './imageOperations/image-transparency
     ErrorpageComponent,
     RotateoptionsComponent,
     ImageTransparencyComponent,
+    BackgroundRemoverComponent,
 
 
   ],

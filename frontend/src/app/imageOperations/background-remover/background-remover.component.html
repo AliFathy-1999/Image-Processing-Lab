@@ -1,0 +1,41 @@
+<div class="m-5 card p-4">
+  <form #upload="ngForm">
+    <h3 class="text-primary fs-3">1. Upload an image</h3>
+    <h5 class="text-danger blockquote-footer mt-1 fs-5"> Select an image from your device( Max: 20 MB Image extensions Allowed toresize it (.png , .jped, .jpg and .tiff) ):</h5>
+    <div>
+      <input class="form-control form-control-lg " id="formFileLg" type="file" name="uploadedImage" (change)="handleUpload($event)" required/>
+      <div class="d-flex justify-content-center mb-3">
+        <button *ngIf="isUploaded" class="btn border-primary border-3 mt-3 text-center text-primary fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)" [disabled]="!upload.valid"> <fa-icon [icon]="faRemove" class="text-primary"></fa-icon> Make Image Transparency</button>
+      </div>
+
+
+    <h3 class="text-primary fs-3 mt-2">2. Preview</h3>
+    <h5 class="text-danger blockquote-footer mt-1  fs-5"> Preview of the image you uploaded and Transparency Sucessfully  </h5>
+    <div id="loadingDiv">
+      <div *ngIf="loading" class="container">
+        <span class="text">Loading... {{counter}}s</span>
+        <div class="dial"></div>
+      </div>
+    </div>
+    <div *ngIf="isSubmitted">
+
+      <div class="container d-flex justify-content-center">
+          <img src="../../../assets/TransparencyImages/{{this.imageAfterTransparency}}" class="img-fluid card image" alt="{{this.imageAfterTransparency}}">
+        <div class="middle">
+          <a href="../../assets/TransparencyImages/{{this.imageAfterTransparency}}" class="text-decoration-none" download><div class="text p-3 text-white bg-primary rounded-pill"><fa-icon [icon]="faArrowAltCircleDown" class="text-white"></fa-icon> Download Image</div></a>
+        </div>
+      </div>
+
+      <div class="btn border-success border-3 fs-5 w-100 p-4 text-start mt-3" >
+        <h3>Image Uploaded Successfully and Background Removed Successfully</h3>
+        <div class="bg-success p-2 text-dark bg-opacity-10 text-center">To download your Transparency  Image  <a href="../../assets/TransparencyImages/{{this.imageAfterTransparency}}" download> Click here <fa-icon [icon]="faImage" ></fa-icon></a></div>
+      </div>
+    </div>
+  </div>
+
+  </form>
+
+
+</div>
+
+

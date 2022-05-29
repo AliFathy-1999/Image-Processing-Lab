@@ -19,4 +19,7 @@ export class GlobalService {
   RotateImage(obj:any):Observable<any>{
     return this.http.post('http://localhost:2255/RotateImage',obj)
   }
+  BackgroundRemover(obj:any):Observable<any>{
+    return this.http.post('http://localhost:2255/ImageTrans',obj)
+  }
 }

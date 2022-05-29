@@ -1,8 +1,36 @@
-
-mat-slider {
-  width: 500px;
-
+.container {
+  position: relative;
+  width: 50%;
 }
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
 .loader {
   margin: 100px;
   border: 10px solid #EAF0F6;
@@ -22,7 +50,10 @@ mat-slider {
   z-index: 2;
   color:#004080
 }
-
+#loadingDiv{
+  margin-top: 20px;
+  margin-left: 25%;
+}
 .dial {
   width: 120px;
   height: 120px;
@@ -43,3 +74,5 @@ mat-slider {
   }
 
 }
+
+

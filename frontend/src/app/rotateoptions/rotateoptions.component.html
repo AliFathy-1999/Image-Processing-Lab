@@ -1,5 +1,17 @@
 
+<button class="btn btn-primary mt-3" (click)="loadingImage()"> load </button>
+<!--<div *ngIf="loading"  class="loader m-auto p-4">
 
+  <p  class="text">Loading {{counter}}s</p>
+  <div class="dial"></div>
+</div>-->
+
+<div class="m-auto">
+  <div *ngIf="loading" class="container">
+    <span class="text">Loading... {{counter}}s</span>
+    <div class="dial"></div>
+  </div>
+</div>
 
 
 
