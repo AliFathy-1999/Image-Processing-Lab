@@ -22,4 +22,7 @@ export class GlobalService {
   BackgroundRemover(obj:any):Observable<any>{
     return this.http.post('http://localhost:2255/ImageTrans',obj)
   }
+  BlurImage(obj:any):Observable<any>{
+    return this.http.post('http://localhost:2255/ImageBlur',obj)
+  }
 }

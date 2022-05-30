@@ -1,1 +1,81 @@
-<p>blur-images works!</p>
+<div class="m-5 card p-4">
+  <form #upload="ngForm">
+    <h3 class="text-primary fs-3">1. Upload an image</h3>
+    <h5 class="text-danger blockquote-footer mt-1 fs-5"> Select an image from your device( Max: 20 MB Image extensions Allowed toresize it (.png , .jped, .jpg and .tiff) ):</h5>
+    <div>
+      <input class="form-control form-control-lg " id="formFileLg" type="file" name="uploadedImage" (change)="handleUpload($event)" required/>
+      <h3 class="text-primary fs-3 mt-3">2. Enter value of blur percentage  </h3>
+      <h5 class="text-danger blockquote-footer mt-1  fs-5"> You can enter Blur sigma value via clicking on Image or enter value manually </h5>
+      <div  *ngIf="isUploaded" class="card  col-11 m-auto p-4">
+          <mat-grid-list cols="3" rowHeight="2:1" >
+            <mat-grid-tile>
+              <img src="../../../assets/exBlur/BlurexImage.jpg" class="w-50 h-100 card me-2" alt="BlurexImage.jpg">
+              <p class="text-danger card p-1  fs-4 ">1</p>
+            </mat-grid-tile>
+          <mat-grid-tile>
+            <input type="image" src="../../../assets/exBlur/BlurImage2.jpg" class="w-50 h-100 card me-2" [(ngModel)]="blur.sigma"  name="blur" (click)="blurFunction(2)">
+            <p class="text-danger card p-2 fs-4">2</p>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <input type="image" src="../../../assets/exBlur/BlurexImage4.jpg" class="w-50 h-100 card me-2" [(ngModel)]="blur.sigma"  name="blur" (click)="blurFunction(4)">
+            <p class="text-danger card p-2 fs-4">4</p>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <input type="image" src="../../../assets/exBlur/BlurexImage6.jpg" class="w-50 h-100 card me-2" [(ngModel)]="blur.sigma"  name="blur" (click)="blurFunction(6)">
+            <p class="text-danger card p-2 fs-4">6</p>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <input type="image" src="../../../assets/exBlur/BlurexImage8.jpg" class="w-50 h-100 card me-2" [(ngModel)]="blur.sigma"  name="blur" (click)="blurFunction(8)">
+            <p class="text-danger card p-2 fs-4">8</p>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <input type="image" src="../../../assets/exBlur/BlurexImage10.jpg" class="w-50 h-100 card me-2" [(ngModel)]="blur.sigma" name="blur" (click)="blurFunction(10)">
+            <p class="text-danger card p-2 fs-5">10</p>
+          </mat-grid-tile>
+          <mat-grid-tile >
+            <h2 class="me-1">Or </h2>
+            <div class="d-flex">
+              <input type="number" class="form-control form-control-lg   mb-2 fs-4 w-25" [(ngModel)]="blur.sigma" placeholder="10"#angle="ngModel"  name="blur" required max="100">
+              <mat-slider thumbLabel  class="card  ms-2 mb-4 text-black w-75" step="1" min="1" max="100" aria-label="units" [(ngModel)]="blur.sigma" #angle="ngModel"  name="blur"></mat-slider>
+          </div>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+
+        <div class="d-flex justify-content-center mb-3">
+          <button *ngIf="isUploaded" class="btn border-primary border-3 mt-3 text-center text-primary fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)" [disabled]="!upload.valid"> Blur</button>
+        </div>
+      </div>
+
+
+
+
+
+
+    <h3 class="text-primary fs-3">3. Preview</h3>
+    <h5 class="text-danger blockquote-footer mt-1  fs-5"> Preview of the image you uploaded and Blured  </h5>
+    <div *ngIf="isSubmitted">
+
+
+
+
+
+      <div class="container d-flex justify-content-center">
+          <img src="../../assets/BlurImages/{{this.imageAfterBlur}}" class="img-fluid card image" alt="{{this.imageAfterBlur}}">
+        <div class="middle">
+          <a href="../../assets/BlurImages/{{this.imageAfterBlur}}" class="text-decoration-none" download><div class="text p-3 text-white bg-primary rounded-pill"><fa-icon [icon]="faArrowAltCircleDown" class="text-white"></fa-icon> Download Image</div></a>
+        </div>
+      </div>
+
+      <div class="btn border-success border-3 fs-5 w-100 p-4 text-start mt-3" >
+        <h3>Image Uploaded Successfully and Rotated Successfully</h3>
+        <div class="bg-success p-2 text-dark bg-opacity-10 text-center">To download your Blured  Image  <a href="../../assets/BlurImages/{{this.imageAfterBlur}}" download> Click here <fa-icon [icon]="faImage" ></fa-icon></a></div>
+      </div>
+    </div>
+  </div>
+
+  </form>
+
+
+</div>
+

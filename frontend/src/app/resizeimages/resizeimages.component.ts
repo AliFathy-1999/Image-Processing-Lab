@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  NgForm  } from '@angular/forms';
 import { faImage,faMaximize,faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons';
 
-import 'file-upload-with-preview/dist/file-upload-with-preview.min.css';
+
 import { ToastrService } from 'ngx-toastr';
 import { GlobalService } from '../services/global.service';
 @Component({

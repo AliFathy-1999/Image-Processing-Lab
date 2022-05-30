@@ -31,7 +31,6 @@
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
-              "file-upload-with-preview/dist/file-upload-with-preview.min.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [

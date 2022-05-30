@@ -130,5 +130,37 @@ class Image{
             })
         }
     }
+    static BlurImage = async (req, res) => {
+        try{
+            const imageSec=`../../assets/uploads/${req.file.originalname}`
+            const imageName=`${req.file.originalname}`
+            let fileN = req.file.originalname;
+            const ext = path.extname(req.file.originalname);
+            if(ext == '.tiff' || ext == '.jpeg'){fileN = fileN.slice(0, -5);}else{fileN = fileN.slice(0, -4);}
+            const myFileName = fileN
+            const myimagePath = path.join(__dirname,`${req.file.path}`);
+            const imageP = "./frontend/src/assets/BlurImages/";
+            const imgBlur = Number.parseInt(req.body.blur);
+            const imageAfterBlur = `BlurDoneOn-${myFileName}-${imgBlur}-blursigma${ext}`
+            const BlurImage = await sharp(myimagePath)
+                .blur(imgBlur)
+             .toFile(`${imageP}${imageAfterBlur}`);
+            res.status(200).send({
+                apiStatus: true,
+                imageName: imageName,
+                imageAfterBlur:imageAfterBlur,
+                imageSec: imageSec,
+                data: req.file,
+                BlurImage:BlurImage,
+                message: "Image Uploaded and Blured Successfully"
+            })
+        }catch(e){
+            res.status(500).send({
+                apiStatus: false,
+                data:e,
+                message: "Error In Bluring Image"
+            })
+        }
+    }
 }
 module.exports=Image;
