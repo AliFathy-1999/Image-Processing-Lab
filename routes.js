@@ -8,4 +8,5 @@ router.post("/ResizeImage", uploadImgMiddleware.single('authimage'),imageControl
 router.post("/RotateImage", uploadImgMiddleware.single('authimage'),imageController.RotateImage);
 router.post("/ImageTrans",uploadImgMiddleware.single('authimage'),imageController.ImageTransparency);
 router.post("/ImageBlur",uploadImgMiddleware.single('authimage'),imageController.BlurImage);
+router.post("/ImageColor",uploadImgMiddleware.single('ColorImage'),imageController.GrayImage);
 module.exports = router;

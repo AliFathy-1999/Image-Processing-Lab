@@ -1,39 +1,32 @@
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="../../../assets/WebsiteLogo.png" alt="" width="65" height="55" class="d-inline-block m-lg-1">
-      <span class="m-lg-3 text-light">Image Processing Lab</span>
+      <img src="../../../assets/WebsiteLogo.png" alt="websitelogo" width="250" height="90" class="d-inline-block m-lg-1">
     </a>
-
-
       <div class="navbar-item">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-5">
+        <ul class="navbar-nav  me-auto mb-2 mb-lg-0 fs-5">
+
           <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" routerLink="/rotateoptions">RotateOptions</a>
+            <a class="nav-link text-light" aria-current="page" routerLink="/home"><mat-icon class="text-light"svgIcon="home"></mat-icon> Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" routerLink="/home">Home</a>
+            <a class="nav-link  text-light" aria-current="page" routerLink="/rotateoptions"><mat-icon class="text-light"svgIcon="colorimage"></mat-icon> Change Color</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Image operations
+              <mat-icon class="text-light"svgIcon="imageOps"></mat-icon> Image Operations
             </a>
             <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-              <li class="nav-item"><a class="dropdown-item  text-light"  routerLink="/resizeimages">Resizing Images</a></li>
-              <li><a class="dropdown-item  text-light" routerLink="/backgroundremover">Background Remover</a></li>
-              <li><a class="dropdown-item  text-light" routerLink="/rotateimages">Rotate Image</a></li>
-              <li><a class="dropdown-item  text-light" routerLink="blurimages">Blur Image</a></li>
+              <li class="nav-item"><a class="dropdown-item text-light"  routerLink="/resizeimages"><mat-icon class="text-light"svgIcon="resizeimage"></mat-icon> Resizing Images</a></li>
+              <li><hr class="dropdown-divider text-light"></li>
+              <li><a class="dropdown-item  text-light" routerLink="/backgroundremover"><mat-icon class="text-light"svgIcon="brimage"></mat-icon>  Background Remover</a></li>
+              <li><hr class="dropdown-divider text-light"></li>
+              <li><a class="dropdown-item  text-light" routerLink="/rotateimages"><mat-icon class="text-light"svgIcon="rotateimage"></mat-icon> Rotate Image</a></li>
+              <li><hr class="dropdown-divider "></li>
+              <li><a class="dropdown-item  text-light" routerLink="blurimages"><mat-icon class="text-light"svgIcon="blurimage"></mat-icon> Blur Image</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-light" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Colour manipulation
-            </a>
-            <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item text-light" href="#">GrayScale</a></li>
-              <li><a class="dropdown-item text-light" href="#">ColourSpace</a></li>
-            </ul>
-          </li>
+
         </ul>
       </div>
 

@@ -162,5 +162,66 @@ class Image{
             })
         }
     }
+    static GrayImage = async (req, res) => {
+        try{
+            const imageSec=`../../assets/uploads/${req.file.originalname}`
+            const imageName=`${req.file.originalname}`
+            let fileN = req.file.originalname;
+            const ext = path.extname(req.file.originalname);
+            if(ext == '.tiff' || ext == '.jpeg'){fileN = fileN.slice(0, -5);}else{fileN = fileN.slice(0, -4);}
+            const myFileName = fileN
+            const myimagePath = path.join(__dirname,`${req.file.path}`);
+            const imageP = "./frontend/src/assets/ColorImages/";
+            const imageG = "./frontend/src/assets/GrayImages/";
+            const imageT = "./frontend/src/assets/TintImages/";
+            const imgColor = req.body.color;
+            const imgTint = req.body.tint;
+            const imgEffect = req.body.effect;
+            const imageAfterColor = `DoneOn-${myFileName}${ext}`
+            const ChColorImage = await sharp(myimagePath)
+            //sharpen
+            //median
+            //normalise
+            //sophia
+            if(imgColor == 'tint'){
+                ChColorImage.tint(imgTint).toFile(`${imageT}Tint${imageAfterColor}`);
+                console.log('Tint Image');
+            }else if(imgColor == 'effect'){
+                if(imgEffect  == 'gray'){
+                    ChColorImage.greyscale().toFile(`${imageG}GrayScale${imageAfterColor}`);
+                    console.log('Gray Image');
+                }else if(imgEffect  == 'cymk'){
+                ChColorImage.toColorspace('cmyk').toFile(`${imageP}Effect-CMYK${imageAfterColor}`);
+                console.log('cmyk Image');
+                }else if(imgEffect=='b-w'){
+                ChColorImage.toColorspace('b-w').toFile(`${imageP}Effect-BlackWhite${imageAfterColor}`);
+                console.log('BlackWhite Image');
+                }
+        }
+            //.toColourspace(imgColor)
+
+            //.normalise()
+
+            //.tint(imgColor)
+            
+            
+            res.status(200).send({
+                apiStatus: true,
+                imageName: imageName,
+                imageAfterColor:imageAfterColor,
+                imageSec: imageSec,
+                data: req.file,
+                ChColorImage:ChColorImage,
+                message: "Image Uploaded and Colored Successfully"
+            })
+        }catch(e){
+            res.status(500).send({
+                apiStatus: false,
+     
+                data:e,
+                message: "Error In Coloring Image"
+            })
+        }
+    }
 }
 module.exports=Image;

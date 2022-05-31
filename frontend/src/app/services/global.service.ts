@@ -7,8 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class GlobalService {
 
-
-
   constructor(private http:HttpClient) {
 
   }

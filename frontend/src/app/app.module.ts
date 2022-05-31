@@ -21,8 +21,9 @@ import { RotateImagesComponent } from './imageOperations/rotate-images/rotate-im
 import { BlurImagesComponent } from './imageOperations/blur-images/blur-images.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { RotateoptionsComponent } from './rotateoptions/rotateoptions.component';
-import { ImageTransparencyComponent } from './imageOperations/image-transparency/image-transparency.component';
+
 import { BackgroundRemoverComponent } from './imageOperations/background-remover/background-remover.component';
+
 
 
 @NgModule({
@@ -36,8 +37,8 @@ import { BackgroundRemoverComponent } from './imageOperations/background-remover
     BlurImagesComponent,
     ErrorpageComponent,
     RotateoptionsComponent,
-    ImageTransparencyComponent,
     BackgroundRemoverComponent,
+
 
 
   ],
