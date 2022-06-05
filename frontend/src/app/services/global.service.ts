@@ -23,4 +23,7 @@ export class GlobalService {
   BlurImage(obj:any):Observable<any>{
     return this.http.post('http://localhost:2255/ImageBlur',obj)
   }
+  ColorChange(obj:any):Observable<any>{
+    return this.http.post('http://localhost:2255/ImageColor',obj)
+  }
 }

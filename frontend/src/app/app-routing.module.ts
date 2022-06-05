@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChangeColorComponent } from './change-color/change-color.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { HomeComponent } from './home/home.component';
 import { BackgroundRemoverComponent } from './imageOperations/background-remover/background-remover.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'blurimages', component:BlurImagesComponent},
   { path: 'rotateoptions', component:RotateoptionsComponent},
   { path: 'backgroundremover', component:BackgroundRemoverComponent},
+  { path: 'changecolor', component:ChangeColorComponent},
   { path: '**', component:ErrorpageComponent }
 
 ];

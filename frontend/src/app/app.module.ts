@@ -3,8 +3,8 @@ import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {MatIconModule,MatIconRegistry} from '@angular/material/icon';
-
+import {MatIconModule} from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -23,6 +23,7 @@ import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { RotateoptionsComponent } from './rotateoptions/rotateoptions.component';
 
 import { BackgroundRemoverComponent } from './imageOperations/background-remover/background-remover.component';
+import { ChangeColorComponent } from './change-color/change-color.component';
 
 
 
@@ -38,6 +39,7 @@ import { BackgroundRemoverComponent } from './imageOperations/background-remover
     ErrorpageComponent,
     RotateoptionsComponent,
     BackgroundRemoverComponent,
+    ChangeColorComponent,
 
 
 
@@ -57,7 +59,7 @@ import { BackgroundRemoverComponent } from './imageOperations/background-remover
     MatSliderModule,
     MatGridListModule,
     MatIconModule,
-
+    MatTabsModule
 
 
   ],

@@ -21,7 +21,7 @@ export class BackgroundRemoverComponent implements OnInit {
   public loading:boolean=false;
   time:any;
   counter:number=0;
-  imageStorage="";
+
   imageAfterTransparency="";
 
 
@@ -30,21 +30,6 @@ export class BackgroundRemoverComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  /*
-  loadingImage(){
-    this.loading = true;
-    this.time=10000,
-    this.counter=this.time/1000;
-    setInterval(()=>{
-      this.counter--;
-      if(this.counter==this.time){
-        this.loading = false;
-      }
-    },1000);
-    setTimeout(() => {
-      this.loading = false;
-    }
-    */
   handleUpload(e:any){
     this.file=e.target.files;
     this.isUploaded=true;

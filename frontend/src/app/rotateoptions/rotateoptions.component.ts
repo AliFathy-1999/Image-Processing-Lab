@@ -18,7 +18,8 @@ export class RotateoptionsComponent implements OnInit {
   seconds:any;
   counter:number=0;
   colorA:any;
-
+  myeffect:any;
+  effects:any="";
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,public _icons:IconsService) {
     // Note that we provide the icon here as a string literal here due to a limitation in
     // Stackblitz. If you want to provide the icon from a URL, you can use:
@@ -45,6 +46,11 @@ export class RotateoptionsComponent implements OnInit {
   colors={
     color:"",
   }
+  handleEffect(myeffect:any){
+    this.effects=myeffect;
+    console.log(this.effects);
+  }
+
   loadingImage(){
     this.loading = true;
     this.time=10000,

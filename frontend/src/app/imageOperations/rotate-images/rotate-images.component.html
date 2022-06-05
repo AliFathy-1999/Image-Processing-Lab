@@ -6,6 +6,7 @@
       <input class="form-control form-control-lg " id="formFileLg" type="file" name="uploadedImage" (change)="handleUpload($event)" required/>
       <h3 class="text-primary fs-3 mt-3">2. Choose Rotate Images Options  </h3>
       <h5 class="text-danger blockquote-footer mt-1  fs-5"> Simple or Advanced Setting </h5>
+      <div *ngIf="isUploaded">
       <section class="mb-3">
         <mat-button-toggle-group appearance="legacy"  #group="matButtonToggleGroup" class="fs-3 p-2 rounded ms-4">
           <mat-button-toggle  [(ngModel)]="selection.simple" name="simple" #simple="ngModel" (click)="handleSimple()">Simple</mat-button-toggle>
@@ -68,7 +69,7 @@
           <button class="btn border-primary border-3 mt-3 text-center text-primary fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)" [disabled]="!upload.valid"> <fa-icon [icon]="faRotate" class="text-primary"></fa-icon> Rotate</button>
         </div>
       </div>
-
+    </div>
 
 
 

@@ -7,6 +7,7 @@ const axios = require('axios');
 const FormData = require('form-data');
 const remover=require('remove.bg');
 const removeBackgroundFromImageFile = remover.removeBackgroundFromImageFile;
+
 class Image{
     static ResizeImage = async  (req, res) => {
         try{
@@ -162,66 +163,104 @@ class Image{
             })
         }
     }
-    static GrayImage = async (req, res) => {
+    static ChangeColorImage = async (req, res) => {
         try{
-            const imageSec=`../../assets/uploads/${req.file.originalname}`
-            const imageName=`${req.file.originalname}`
-            let fileN = req.file.originalname;
-            const ext = path.extname(req.file.originalname);
-            if(ext == '.tiff' || ext == '.jpeg'){fileN = fileN.slice(0, -5);}else{fileN = fileN.slice(0, -4);}
-            const myFileName = fileN
-            const myimagePath = path.join(__dirname,`${req.file.path}`);
-            const imageP = "./frontend/src/assets/ColorImages/";
-            const imageG = "./frontend/src/assets/GrayImages/";
-            const imageT = "./frontend/src/assets/TintImages/";
-            const imgColor = req.body.color;
-            const imgTint = req.body.tint;
-            const imgEffect = req.body.effect;
-            const imageAfterColor = `DoneOn-${myFileName}${ext}`
-            const ChColorImage = await sharp(myimagePath)
-            //sharpen
-            //median
-            //normalise
-            //sophia
-            if(imgColor == 'tint'){
-                ChColorImage.tint(imgTint).toFile(`${imageT}Tint${imageAfterColor}`);
-                console.log('Tint Image');
-            }else if(imgColor == 'effect'){
-                if(imgEffect  == 'gray'){
-                    ChColorImage.greyscale().toFile(`${imageG}GrayScale${imageAfterColor}`);
-                    console.log('Gray Image');
-                }else if(imgEffect  == 'cymk'){
-                ChColorImage.toColorspace('cmyk').toFile(`${imageP}Effect-CMYK${imageAfterColor}`);
-                console.log('cmyk Image');
-                }else if(imgEffect=='b-w'){
-                ChColorImage.toColorspace('b-w').toFile(`${imageP}Effect-BlackWhite${imageAfterColor}`);
-                console.log('BlackWhite Image');
+
+        let fileN = req.file.originalname;
+        const ext = path.extname(req.file.originalname);
+        if(ext == '.tiff' || ext == '.jpeg'){fileN = fileN.slice(0, -5);}else{fileN = fileN.slice(0, -4);}
+        const myFileName = fileN
+        const myimagePath=path.join(__dirname,`${req.file.path}`);
+        const imgType = req.body.type;
+        const imgTint = req.body.tint;
+        const imgEffect = req.body.effect;
+        const imgMedian = Number.parseInt(req.body.median);
+        var imgSharp= Number.parseInt(req.body.sharp);
+        const imgWidth = Number.parseInt(req.body.width);
+        var imgHeight= Number.parseInt(req.body.height);
+        var imageBrightness= Number.parseFloat(req.body.brightness);
+        var imageG = "./frontend/src/assets/GrayImages/";
+        var imageC = "./frontend/src/assets/ColorImages/";
+        var imageAfterGray = `${myFileName}-GrayDone${ext}`
+
+        const ColorImage = await sharp(myimagePath)
+        switch(imgType){
+            case 'tint':
+                    var imageT = "./frontend/src/assets/TintImages/";
+                    var imageAfterTint = `${myFileName}-tinted${ext}`
+                    ColorImage.tint(imgTint).toFile(`${imageT}${imageAfterTint}`); 
+                    var isTinted = true;
+                break;
+            case 'effect':
+                var message = "";
+                var imageAfterColor= `${imgEffect}-${myFileName}${ext}`
+                if (imgEffect ==="gray"){
+                    ColorImage.greyscale().toFile(`${imageG}${imageAfterGray}`);
+                    var isGrayed = true;
+                    message = "Image Uploaded and Grayed Successfully"
+                }else if(imgEffect  == 'cmyk'){
+                    ColorImage.toColourspace('cmyk').toFile(`${imageC}${imageAfterColor}`);
+                    var isCMYK = true;
+                    message= "Image Uploaded and CMYK Color Changed Successfully"
                 }
+                else if(imgEffect=='bw'){
+                    ColorImage.toColorspace('b-w').toFile(`${imageC}${imageAfterColor}`);
+                    var isBW = true;
+                    message= "Image Uploaded and Black and White Color Changed Successfully"
+                }else if(imgEffect=='sharpen'){
+                    imageAfterColor=`${imgEffect}-${imgSharp}-${myFileName}${ext}`
+                    ColorImage.sharpen(imgSharp).toFile(`${imageC}${imageAfterColor}`);
+                    var isSharpen = true;
+                    message= "Image Uploaded and Sharpen Color Changed Successfully"
+                }else if(imgEffect=='median'){
+                    var imageAfterMedian = `medianDoneOn-${imgMedian}-${myFileName}${ext}`
+                    ColorImage.median(imgMedian).toFile(`${imageC}${imageAfterMedian}`);
+                    var isMedian = true;
+                    message= "Image Uploaded and Median Color Changed Successfully"
+                }else if(imgEffect=='normalise'){
+                    ColorImage.normalise().toFile(`${imageC}${imageAfterColor}`);
+                    var isNormalise = true;
+                    message= "Image Uploaded and Normalise Color Changed Successfully"
+                }else if(imgEffect=='histogram'){
+                    var imageAfterHist = `HistogramDoneOn-W-${imgWidth}-H-${imgHeight}-${myFileName}${ext}`
+                    ColorImage.clahe({
+                        width: imgWidth,
+                        height: imgHeight,
+                      }).toFile(`${imageC}${imageAfterHist}`);
+                    var isHistogram = true;
+                    message= "Image Uploaded and Histogram Color Changed Successfully"
+                }else if(imgEffect=='brightness'){
+                    var imageAfterBrig = `BrigDoneOn-${imageBrightness}-${myFileName}${ext}`
+                    ColorImage.modulate({
+                        brightness:imageBrightness,
+                    }).toFile(`${imageC}${imageAfterBrig}`);
+                    var isBrightness = true;
+                    message= "Image Uploaded and Brightness Color Changed Successfully"
+                }
+                break;
+                default:
+                    throw new Error('Invalid Input')
         }
-            //.toColourspace(imgColor)
-
-            //.normalise()
-
-            //.tint(imgColor)
-            
-            
             res.status(200).send({
                 apiStatus: true,
-                imageName: imageName,
-                imageAfterColor:imageAfterColor,
-                imageSec: imageSec,
-                data: req.file,
-                ChColorImage:ChColorImage,
-                message: "Image Uploaded and Colored Successfully"
+                imageNameT:(isTinted && `../../assets/TintImages/${imageAfterTint}`),
+                imageNameG:(isGrayed && `../../assets/GrayImages/${imageAfterGray}`),
+                imageNameCmyk:(isCMYK && `../../assets/ColorImages/${imageAfterColor}`),
+                imageNameBw:(isBW && `../../assets/ColorImages/${imageAfterColor}`),
+                imageNameSharp:(isSharpen && `../../assets/ColorImages/${imageAfterColor}`),
+                imageNameMedian:(isMedian && `../../assets/ColorImages/${imageAfterMedian}`),
+                imageNameNorm:(isNormalise && `../../assets/ColorImages/${imageAfterColor}`),
+                imageNameHist:(isHistogram && `../../assets/ColorImages/${imageAfterHist}`),
+                imageNameBrig:(isBrightness && `../../assets/ColorImages/${imageAfterBrig}`),
+                message: message
             })
         }catch(e){
             res.status(500).send({
                 apiStatus: false,
-     
-                data:e,
-                message: "Error In Coloring Image"
+                data:e.message,
             })
         }
+    
     }
 }
 module.exports=Image;

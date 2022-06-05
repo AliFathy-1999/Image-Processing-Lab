@@ -1,0 +1,198 @@
+<div class="m-5 card p-4">
+  <form #upload="ngForm">
+    <h3 class="text-primary fs-3">1. Upload an image</h3>
+    <h5 class="text-danger blockquote-footer mt-1 fs-5"> Select an image from your device( Max: 20 MB Image extensions Allowed to change its Color  (.png , .jped, .jpg and .tiff) ):</h5>
+    <div>
+      <input class="form-control form-control-lg " id="formFileLg" type="file" name="uploadedImage" (change)="handleUpload($event)" required/>
+      <h3 class="text-primary fs-3 mt-3">2. Choose Color Options  </h3>
+      <h5 class="text-danger blockquote-footer mt-1  fs-5"> Tint or Effect Setting </h5>
+      <section  class="mb-3">
+        <mat-button-toggle-group appearance="legacy"  #group="matButtonToggleGroup" class="fs-3 p-2 rounded ms-4">
+          <mat-button-toggle  [(ngModel)]="type" class="text-black" name="tint" #tint="ngModel" (click)="handleTint()"><mat-icon  svgIcon="tint"  ></mat-icon> Tint</mat-button-toggle>
+          <mat-button-toggle  [(ngModel)]="type" class="text-black" name="effect" #effect="ngModel" (click)="handleEffect()" ><mat-icon svgIcon="effect"></mat-icon> Effect</mat-button-toggle>
+        </mat-button-toggle-group>
+      </section>
+      <div *ngIf="tintoption" class="  col-11 m-auto">
+        <div class="d-flex justify-content-center ms-5">
+          <h1>Tint Color : </h1>
+          <input type="color"  class="form-control form-control-lg fs-4 ms-2 w-50" [(ngModel)]="tintvalue" #color="ngModel" [ngModelOptions]="{standalone: true}">
+         </div>
+        <div class="d-flex justify-content-center mb-3">
+          <button *ngIf="isUploaded" class="btn border-primary border-3 mt-3 text-center text-primary fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)"><mat-icon svgIcon="tint" ></mat-icon> Apply Tint </button>
+        </div>
+      </div>
+      <div *ngIf="effectoption" class="card">
+        <mat-tab-group>
+          <mat-tab >
+            <ng-template mat-tab-label>
+              <button   class="border-0  p-5 bg-transparent" (click)="handlemyEffect('gray')">
+                <mat-icon  svgIcon="gray"></mat-icon> Gray Scale
+              </button>
+            </ng-template>
+            <div  class="d-flex justify-content-center mt-4">
+              <img  src="../../assets/EffectImages/GrayScale.jpg" width="500" height="250" alt="GrayScale.jpg">
+            </div>
+            <div *ngIf="isUploaded" class="d-flex justify-content-center mb-3">
+              <button  class="btn border-secondary border-3 mt-3 text-center text-secondary fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)" ><mat-icon svgIcon="gray"></mat-icon> Apply Gray Scale </button>
+            </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <a href=""> <button   class="border-0  p-5 bg-transparent" (click)="handlemyEffect('cmyk')">
+              <mat-icon svgIcon="cmyk"></mat-icon> Cmyk
+            </button></a>
+            </ng-template>
+            <div  class="d-flex justify-content-center mt-4">
+              <img src="../../assets/EffectImages/cmyk.jpg" width="500" height="250" alt="cmyk.jpg">
+            </div>
+            <div class="d-flex justify-content-center mb-3">
+              <button  class="btn border-primary border-3 mt-3 text-center text-primary fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)" ><mat-icon svgIcon="cmyk"></mat-icon> Apply CMYK  </button>
+            </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <button   class="border-0  p-5 bg-transparent" (click)="handlemyEffect('bw')">
+              <mat-icon  svgIcon="bw"></mat-icon> Black and White
+            </button>
+            </ng-template>
+            <div class="d-flex justify-content-center mt-4">
+            <img src="../../assets/EffectImages/bw.jpg" width="500" height="250" alt="bw.jpg">
+          </div>
+            <div class="d-flex justify-content-center mb-3">
+              <button  class="btn border-dark border-3 mt-3 text-center text-dark fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)"><mat-icon svgIcon="bw"></mat-icon> Apply B & W  </button>
+            </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <button class="border-0  p-5 bg-transparent" (click)="handlemyEffect('sharpen')"><mat-icon  svgIcon="sharp"></mat-icon>
+              Sharpen
+            </button>
+            </ng-template>
+            <div class="d-flex justify-content-center mt-4">
+              <img src="../../assets/EffectImages/sharpen.jpg" width="500" height="250" alt="sharpen.jpg">
+            </div>
+
+            <h2 class="ms-3 text-primary ">Please Enter Sharpness percentage % :</h2>
+            <div class="d-flex mt-4 ms-5 ">
+              <div class="col-1">
+                <input type="number" class="form-control form-control-lg  me-2 mb-2 fs-4 " [(ngModel)]="sharpValue" placeholder="2"#sharp="ngModel"  name="sharpValue" required max="20">
+              </div>
+              <mat-slider thumbLabel  class="card col-7 ms-2 mb-4 text-black" step="1" min="1" max="20" aria-label="units" [(ngModel)]="sharpValue" #sharp="ngModel"  name="sharpValue"></mat-slider>
+            </div>
+              <div class="d-flex justify-content-center mb-3">
+                <button  class="btn border-primary border-3 mt-3 text-center text-primary fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)" [disabled]="!sharp.valid"><mat-icon svgIcon="sharp"></mat-icon> Apply Sharpness</button>
+              </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <button   class="border-0  p-5 bg-transparent" (click)="handlemyEffect('median')">
+              <mat-icon  svgIcon="median"  ></mat-icon>
+              Median
+              </button>
+            </ng-template>
+            <div class="d-flex justify-content-center mt-4">
+              <img src="../../assets/EffectImages/median.jpg" width="500" height="250" alt="median.jpg">
+            </div>
+            <h2 class="ms-3 text-primary ">Please Enter Median percentage % :</h2>
+            <div class="d-flex mt-4 ms-5 ">
+              <div class="col-1">
+                <input type="number" class="form-control form-control-lg  me-2 mb-2 fs-4 " [(ngModel)]="medianValue" placeholder="2"#median="ngModel"  name="medianValue" required max="40">
+              </div>
+              <mat-slider thumbLabel  class="card col-7 ms-2 mb-4 text-black" step="1" min="1" max="40" aria-label="units" [(ngModel)]="medianValue" #median="ngModel"  name="medianValue"></mat-slider>
+            </div>
+              <div class="d-flex justify-content-center mb-3">
+                <button  class="btn border-primary border-3 mt-3 text-center text-primary fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)" [disabled]="!median.valid"><mat-icon svgIcon="median"></mat-icon> Apply Median</button>
+              </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <button   class="border-0  p-5 bg-transparent" (click)="handlemyEffect('normalise')">
+              <mat-icon  svgIcon="norm"  ></mat-icon>
+              Normalise
+              </button>
+            </ng-template>
+            <div class="d-flex justify-content-center mt-4">
+              <img src="../../assets/EffectImages/Normalise.jpg" width="500" height="250" alt="normalise.jpg">
+            </div>
+              <div class="d-flex justify-content-center mb-3">
+                <button  class="btn border-primary border-3 mt-3 text-center text-primary fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)"><mat-icon svgIcon="norm"></mat-icon> Apply Normalise </button>
+              </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <button  class="border-0  p-5 bg-transparent" (click)="handlemyEffect('histogram')">
+              <mat-icon  svgIcon="hist"></mat-icon>
+              Histogram
+            </button>
+            </ng-template>
+            <div class="d-flex justify-content-center mt-4">
+              <img src="../../assets/EffectImages/histogram.jpg" width="500" height="250" alt="histogram.jpg">
+            </div>
+            <h2>Histogram percentage : </h2>
+            <h3 class="ms-3 text-primary ">Please Enter First Value (0-20) Only :</h3>
+            <div class="d-flex mt-4 ms-5 ">
+              <div class="col-1">
+                <input type="number" class="form-control form-control-lg  me-2 mb-2 fs-4 " [(ngModel)]="this.dimensions.width" #width="ngModel" placeholder="2" name="width"  required max="20" >
+              </div>
+              <mat-slider thumbLabel  class="card col-7 ms-2 mb-4 text-black" step="1" min="1" max="20" aria-label="units" [(ngModel)]="this.dimensions.width" name="width"   required #width="ngModel"></mat-slider>
+            </div>
+            <h3 class="ms-3 text-primary ">Please Enter Second Value (0-20) Only  :</h3>
+            <div class="d-flex mt-4 ms-5 ">
+              <div class="col-1">
+                <input type="number" class="form-control form-control-lg  me-2 mb-2 fs-4 " [(ngModel)]="this.dimensions.height" placeholder="2" #height="ngModel" name="height" required max="20">
+              </div>
+              <mat-slider thumbLabel  class="card col-7 ms-2 mb-4 text-black" step="1" min="1" max="20" aria-label="units" [(ngModel)]="this.dimensions.height" name="height" required #height="ngModel"></mat-slider>
+            </div>
+              <div class="d-flex justify-content-center mb-3" >
+                <button  class="btn border-primary border-3 mt-3 text-center text-primary fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)" [disabled]="!width.valid && !height.valid"><mat-icon svgIcon="hist"></mat-icon> Apply Equalize</button>
+              </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <button  class="border-0  p-5 bg-transparent" (click)="handlemyEffect('brightness')">
+              <mat-icon  svgIcon="brig"></mat-icon>
+              Brightness
+              </button>
+            </ng-template>
+            <div class="d-flex justify-content-center mt-4">
+              <img src="../../assets/EffectImages/brightness.jpg" width="500" height="250" alt="brightness.jpg">
+            </div>
+
+            <h2 class="ms-3 text-primary ">Please Enter Brightness percentage % :</h2>
+            <div class="d-flex mt-4 ms-5 ">
+              <div class="col-1">
+                <input type="number" class="form-control form-control-lg  me-2 mb-2 fs-4 " [(ngModel)]="BrightnessValue" placeholder="2.0" #Brig="ngModel"  name="BrightnessValue" required max="3.5">
+              </div>
+              <mat-slider thumbLabel  class="card col-7 ms-2 mb-4 text-black" step="0.1" min="0.1" max="3.5" aria-label="units" [(ngModel)]="BrightnessValue" #Brig="ngModel"  name="BrightnessValue"></mat-slider>
+            </div>
+              <div class="d-flex justify-content-center mb-3">
+                <button  class="btn border-primary border-3 mt-3 text-center text-primary fs-4  p-2 me-4" type="submit" (click)="handleSubmit(upload)" [disabled]="!Brig.valid"><mat-icon svgIcon="brig"></mat-icon> Apply Brightness </button>
+              </div>
+          </mat-tab>
+        </mat-tab-group>
+
+      </div>
+
+    <h3 class="text-primary fs-3" >3. Preview</h3>
+    <h5 class="text-danger blockquote-footer mt-1  fs-5" > Preview of the image you uploaded and Colored image  </h5>
+    <div *ngIf="isSubmitted">
+      <div class="container d-flex justify-content-center">
+          <img src="{{this.imageAfterColor}}" class="img-fluid card image" alt="{{this.imageAfterColor}}">
+        <div class="middle">
+          <a href="{{this.imageAfterColor}}" class="text-decoration-none" download><div class="text p-3 text-white bg-primary rounded-pill"><fa-icon [icon]="faArrowAltCircleDown" class="text-white"></fa-icon> Download Image</div></a>
+        </div>
+      </div>
+
+      <div class="btn border-success border-3 fs-5 w-100 p-4 text-start mt-3" >
+        <h3>Image Uploaded Successfully and Modified Successfully</h3>
+        <div class="bg-success p-2 text-dark bg-opacity-10 text-center">To download your  Image  <a href="{{this.imageAfterColor}}" download> Click here <fa-icon [icon]="faImage" ></fa-icon></a></div>
+      </div>
+    </div>
+  </div>
+
+  </form>
+
+
+</div>
+
