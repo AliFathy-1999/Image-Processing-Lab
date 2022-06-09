@@ -11,8 +11,6 @@ const removeBackgroundFromImageFile = remover.removeBackgroundFromImageFile;
 class Image{
     static ResizeImage = async  (req, res) => {
         try{
-            const imageSec=`../../assets/uploads/${req.file.originalname}`
-            const imageName=`${req.file.originalname}`
             const imagePath=path.join(__dirname,`${req.file.path}`);
             let fileN = req.file.originalname;
             const ext = path.extname(req.file.originalname);
@@ -31,26 +29,19 @@ class Image{
                  .toFile(`${imageP}${imageAfterResize}`);
             res.status(200).send({
                 apiStatus: true,
-                imageName: imageName,
                 imageAfterResize:imageAfterResize,
-                imagePath: imagePath,
-                imageSec: imageSec,
-                data: req.file, 
-                ResizedImage:ResizedImage,
                 message: "Image Uploaded and Resized Successfully"
             })
         }catch(e){
             res.status(500).send({
                 apiStatus: false,
-                data:e,
+                data:e.message,
                 message: "Only images are allowed (.png, .jpg, .tiff, .jpeg)"
             })
         }
     }
     static RotateImage = async (req, res) => {
         try{
-            const imageSec=`../../assets/uploads/${req.file.originalname}`
-            const imageName=`${req.file.originalname}`
             let fileN = req.file.originalname;
             const ext = path.extname(req.file.originalname);
             if(ext == '.tiff' || ext == '.jpeg'){fileN = fileN.slice(0, -5);}else{fileN = fileN.slice(0, -4);}
@@ -61,25 +52,17 @@ class Image{
             const color =  req.body.color;
             const imageAfterRotate = `${myFileName}-rotateWithAngle-${imgAngle}degree${ext}`
             const RotateImage = await sharp(myimagePath)
-             .rotate(imgAngle,{
-                background: color ,
-             })
-    
+             .rotate(imgAngle,{background: color})
              .toFile(`${imageP}${imageAfterRotate}`);
             res.status(200).send({
                 apiStatus: true,
-                myAngle:req.body.angle,
-                imageName: imageName,
                 imageAfterRotate:imageAfterRotate,
-                imageSec: imageSec,
-                data: req.file,
-                RotateImage:RotateImage,
                 message: "Image Uploaded and Rotated Successfully"
             })
         }catch(e){
             res.status(500).send({
                 apiStatus: false,
-                data:e,
+                data:e.message,
                 message: "Error In Rotating Image"
             })
         }
@@ -100,7 +83,7 @@ class Image{
           responseType: 'arraybuffer',
           headers: {
             ...formData.getHeaders(),
-            'X-Api-Key': 'xgUvTmgFtL5xgdyoqpMRi8wu',
+            'X-Api-Key': 'AM2Eup5kWAPGtaND2PFC26aT',
           },
           encoding: null
         })
@@ -111,14 +94,10 @@ class Image{
         .catch((error) => {
             return console.error('Request failed:', error);
         });
-    
+
         try{
             res.status(200).send({
                 apiStatus: true,
-                mypath:mypath,
-                data: req.file,
-                outputImagePath:outputImagePath,
-                imageName:imageName,
                 imageAfterTransparency:imageAfterTransparency,
                 message: "Image Uploaded and Transparent Successfully"
             })
@@ -126,15 +105,14 @@ class Image{
         catch(e){
             res.status(500).send({
                 apiStatus: false,
-                data:e,
+                data:e.message,
                 message: "Error In Transparent Image"
             })
         }
     }
     static BlurImage = async (req, res) => {
         try{
-            const imageSec=`../../assets/uploads/${req.file.originalname}`
-            const imageName=`${req.file.originalname}`
+
             let fileN = req.file.originalname;
             const ext = path.extname(req.file.originalname);
             if(ext == '.tiff' || ext == '.jpeg'){fileN = fileN.slice(0, -5);}else{fileN = fileN.slice(0, -4);}
@@ -148,24 +126,19 @@ class Image{
              .toFile(`${imageP}${imageAfterBlur}`);
             res.status(200).send({
                 apiStatus: true,
-                imageName: imageName,
                 imageAfterBlur:imageAfterBlur,
-                imageSec: imageSec,
-                data: req.file,
-                BlurImage:BlurImage,
                 message: "Image Uploaded and Blured Successfully"
             })
         }catch(e){
             res.status(500).send({
                 apiStatus: false,
-                data:e,
+                data:e.message,
                 message: "Error In Bluring Image"
             })
         }
     }
     static ChangeColorImage = async (req, res) => {
         try{
-
         let fileN = req.file.originalname;
         const ext = path.extname(req.file.originalname);
         if(ext == '.tiff' || ext == '.jpeg'){fileN = fileN.slice(0, -5);}else{fileN = fileN.slice(0, -4);}
@@ -188,7 +161,7 @@ class Image{
             case 'tint':
                     var imageT = "./frontend/src/assets/TintImages/";
                     var imageAfterTint = `${myFileName}-tinted${ext}`
-                    ColorImage.tint(imgTint).toFile(`${imageT}${imageAfterTint}`); 
+                    ColorImage.tint(imgTint).toFile(`${imageT}${imageAfterTint}`);
                     var isTinted = true;
                 break;
             case 'effect':
@@ -260,7 +233,7 @@ class Image{
                 data:e.message,
             })
         }
-    
+
     }
 }
 module.exports=Image;

@@ -1,12 +1,13 @@
 <div class="m-5 card p-4">
+  <h1 class="display-4 fw-bold lh-1 text-center card p-3 card-footer" style="color:#004080">Resize image page</h1>
   <form #upload="ngForm">
     <h3 class="text-primary fs-3">1. Upload an image</h3>
-    <h5 class="text-danger blockquote-footer mt-1 fs-5"> Select an image from your device( Max: 20 MB Image extensions Allowed toresize it (.png , .jped, .jpg and .tiff) ):</h5>
+    <h5 class="text-danger blockquote-footer mt-1 fs-5"> Select an image from your device( Max: 20 MB Image extensions Allowed to resize it (.png , .jped, .jpg and .tiff) ):</h5>
     <div>
       <input class="form-control form-control-lg" id="formFileLg" type="file" name="uploadedImage" (change)="handleUpload($event)"/>
       <h3 class="text-primary fs-3 mt-2">2. Enter Width and Height </h3>
       <h5 class="text-danger blockquote-footer mt-1 fs-5"> Enter Width and Height more than 10 and less than 1500</h5>
-      <div class="">
+      <div *ngIf="isUploaded">
         <input type="number" class="form-control form-control-lg w-25 fs-4" name="width" placeholder="Width"  [(ngModel)]="dimensions.width"  required min="10" max="1500" #width="ngModel"/>
         <div class="alert alert-danger w-25" *ngIf=" upload.submitted && width.invalid" >
           <div *ngIf="width.errors?.['required']">
@@ -51,11 +52,9 @@
           <a href="../../assets/ResizedImages/{{this.imageAfterResize}}" class="text-decoration-none" download><div class="text p-3 text-white bg-primary rounded-pill"><fa-icon [icon]="faArrowAltCircleDown" class="text-white"></fa-icon> Download Image</div></a>
         </div>
       </div>
-
-
       <div class="btn border-success border-3 fs-5 w-100 p-4 text-start mt-3" >
         <h3>Image Uploaded Successfully and Resized Successfully</h3>
-        <div class="bg-success p-2 text-dark bg-opacity-10 text-center">To download your resized  Image  <a href="../../assets/ResizedImages/{{this.imageAfterResize}}" download> Click here <fa-icon [icon]="faImage" ></fa-icon></a></div>
+        <div class="bg-success p-2 text-dark bg-opacity-10 text-center">To download your resized  Image  <a href="../../assets/ResizedImages/{{this.imageAfterResize}}" download> Click here </a></div>
       </div>
 
     </div>

@@ -1,4 +1,5 @@
 <div class="m-5 card p-4">
+  <h1 class="display-4 fw-bold lh-1 text-center card p-3 card-footer" style="color:#004080">Change Color page</h1>
   <form #upload="ngForm">
     <h3 class="text-primary fs-3">1. Upload an image</h3>
     <h5 class="text-danger blockquote-footer mt-1 fs-5"> Select an image from your device( Max: 20 MB Image extensions Allowed to change its Color  (.png , .jped, .jpg and .tiff) ):</h5>
@@ -7,7 +8,7 @@
       <h3 class="text-primary fs-3 mt-3">2. Choose Color Options  </h3>
       <h5 class="text-danger blockquote-footer mt-1  fs-5"> Tint or Effect Setting </h5>
       <section  class="mb-3">
-        <mat-button-toggle-group appearance="legacy"  #group="matButtonToggleGroup" class="fs-3 p-2 rounded ms-4">
+        <mat-button-toggle-group appearance="legacy"  #group="matButtonToggleGroup" class="fs-3 p-2 rounded ms-4" *ngIf="isUploaded">
           <mat-button-toggle  [(ngModel)]="type" class="text-black" name="tint" #tint="ngModel" (click)="handleTint()"><mat-icon  svgIcon="tint"  ></mat-icon> Tint</mat-button-toggle>
           <mat-button-toggle  [(ngModel)]="type" class="text-black" name="effect" #effect="ngModel" (click)="handleEffect()" ><mat-icon svgIcon="effect"></mat-icon> Effect</mat-button-toggle>
         </mat-button-toggle-group>
@@ -37,7 +38,7 @@
             </div>
           </mat-tab>
           <mat-tab>
-            <ng-template mat-tab-label>
+            <ng-template mat-tab-label >
               <a href=""> <button   class="border-0  p-5 bg-transparent" (click)="handlemyEffect('cmyk')">
               <mat-icon svgIcon="cmyk"></mat-icon> Cmyk
             </button></a>
@@ -186,7 +187,7 @@
 
       <div class="btn border-success border-3 fs-5 w-100 p-4 text-start mt-3" >
         <h3>Image Uploaded Successfully and Modified Successfully</h3>
-        <div class="bg-success p-2 text-dark bg-opacity-10 text-center">To download your  Image  <a href="{{this.imageAfterColor}}" download> Click here <fa-icon [icon]="faImage" ></fa-icon></a></div>
+        <div class="bg-success p-2 text-dark bg-opacity-10 text-center">To download your  Image  <a href="{{this.imageAfterColor}}" download> Click here </a></div>
       </div>
     </div>
   </div>

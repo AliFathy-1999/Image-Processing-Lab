@@ -10,11 +10,8 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class BlurImagesComponent implements OnInit {
   faArrowAltCircleDown=faArrowAltCircleDown;faImage=faImage;
-  imageUrl:any={};imagePath:any="";imageAlt:any="";myimage:any="";
   file:any=null;
   isSubmitted:boolean=false;
-  simpleoptions:boolean=false;
-  advancedoptions:boolean=false;
   isUploaded:boolean=false;
   imageStorage="";
   imageAfterBlur="";
@@ -22,24 +19,9 @@ export class BlurImagesComponent implements OnInit {
   blur= {
     "sigma": "",
   }
-
-  range={
-    myrange:0
-  }
-
-  myimgname:any="";
   constructor(private _global:GlobalService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
-  }
-  handleSimple(){
-    this.simpleoptions=true;
-    this.advancedoptions=false;
-  }
-  handleAdvanced(){
-    this.simpleoptions=false;
-    this.advancedoptions=true;
-
   }
   blurFunction(value:any){
     this.blur.sigma=value;
@@ -49,17 +31,12 @@ export class BlurImagesComponent implements OnInit {
     this.isUploaded=true;
   }
   handleSubmit(form:NgForm){
-
     if(this.file != null){
     let formData = new FormData();
     formData.append("authimage",this.file[0]);
     formData.append("blur",this.blur.sigma);
-
     this._global.BlurImage(formData).subscribe(data=>{
         this.toastr.success(data.message)
-        this.imagePath=data.imagePath;
-        this.myimgname=data.imageName;
-        this.imageAlt=data.imageName;
         this.imageAfterBlur=data.imageAfterBlur;
         this.isSubmitted=true;
 

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {  NgForm  } from '@angular/forms';
-import { faImage,faRemoveFormat,faRemove,faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons';
+import { faImage,faRemove,faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { GlobalService } from 'src/app/services/global.service';
-
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { IconsService } from 'src/app/services/icons.service';
 
 @Component({
   selector: 'app-background-remover',
@@ -12,21 +14,16 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class BackgroundRemoverComponent implements OnInit {
   faArrowAltCircleDown=faArrowAltCircleDown;faImage=faImage;faRemove=faRemove;
-  imageUrl:any={};imagePath:any="";imageAlt:any="";myimage:any="";
   file:any=null;
-  isSubmitted:boolean=false;
-  simpleoptions:boolean=false;
-  advancedoptions:boolean=false;
-  isUploaded:boolean=false;
-  public loading:boolean=false;
-  time:any;
-  counter:number=0;
-
+  isSubmitted:boolean=false;isUploaded:boolean=false;public loading:boolean=false;
+  time:any;counter:number=0;
   imageAfterTransparency="";
 
 
   myimgname:any="";
-  constructor(private _global:GlobalService,public toastr:ToastrService) { }
+  constructor(private _global:GlobalService,public toastr:ToastrService,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private _icons:IconsService) {
+    iconRegistry.addSvgIconLiteral('bkr', sanitizer.bypassSecurityTrustHtml(this._icons.BACKGROUND_REMOVER_ICON));
+  }
 
   ngOnInit(): void {
   }
@@ -47,14 +44,10 @@ export class BackgroundRemoverComponent implements OnInit {
     if(this.file != null){
     let formData = new FormData();
     formData.append("authimage",this.file[0]);
-
     this._global.BackgroundRemover(formData).subscribe(data=>{
       setTimeout(()=>{
         this.loading=false;
         this.toastr.success(data.message)
-        this.imagePath=data.mypath;
-        this.myimgname=data.imageName;
-        this.imageAlt=data.imageName;
         this.imageAfterTransparency=data.imageAfterTransparency;
         this.isSubmitted=true;
       },10000);

@@ -184,27 +184,7 @@ export class HomeComponent implements OnInit {
     iconRegistry.addSvgIconLiteral('arrowup', sanitizer.bypassSecurityTrustHtml(this._icons.ARROW_UP_ICON));
   }
 
-  ngOnInit(): void {
-
-
-  }
-
-  /*scrollFunction(){
-    mybutton = document.getElementById("btn-back-to-top");
-    if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
-    ) {
-      mybutton.style.display = "block";
-    } else {
-      mybutton.style.display = "none";
-    }
-  }
-
-  (  window.onscroll = function () {
-    scrollFunction();
-  };)();*/
-
-
+  ngOnInit(): void {}
+  getToTop(){window.scrollTo(0,0);}
 
 }

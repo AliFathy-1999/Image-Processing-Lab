@@ -11,16 +11,9 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class RotateImagesComponent implements OnInit {
   faArrowAltCircleDown=faArrowAltCircleDown;faImage=faImage;faRotate=faRotate;
-  imageUrl:any={};imagePath:any="";imageAlt:any="";myimage:any="";
   file:any=null;
-  isSubmitted:boolean=false;
-  simpleoptions:boolean=false;
-  advancedoptions:boolean=false;
-  isUploaded:boolean=false;
-  imageStorage="";
+  isSubmitted:boolean=false;simpleoptions:boolean=false;advancedoptions:boolean=false;isUploaded:boolean=false;
   imageAfterRotate="";
-
-
   selection={
     simple:"",
     advanced:"",
@@ -31,9 +24,7 @@ export class RotateImagesComponent implements OnInit {
   colors= {
     "color": "",
   }
-  range={
-    myrange:0
-  }
+
 
   myimgname:any="";
   constructor(private _global:GlobalService,private toastr: ToastrService) { }
@@ -66,12 +57,8 @@ export class RotateImagesComponent implements OnInit {
     formData.append("color",this.colors.color);
     this._global.RotateImage(formData).subscribe(data=>{
         this.toastr.success(data.message)
-        this.imagePath=data.imagePath;
-        this.myimgname=data.imageName;
-        this.imageAlt=data.imageName;
         this.imageAfterRotate=data.imageAfterRotate;
         this.isSubmitted=true;
-
     },(err)=>{
       this.toastr.error("Or you dont enter Angle Value","Error Uploading Image, Noticed that, Image size should be less than 20MB and Image should be in jpeg,png,jpg,tiff format");
     })

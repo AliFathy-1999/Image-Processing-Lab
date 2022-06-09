@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -21,8 +21,6 @@ import { ResizeimagesComponent } from './resizeimages/resizeimages.component';
 import { RotateImagesComponent } from './imageOperations/rotate-images/rotate-images.component';
 import { BlurImagesComponent } from './imageOperations/blur-images/blur-images.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
-import { RotateoptionsComponent } from './rotateoptions/rotateoptions.component';
-
 import { BackgroundRemoverComponent } from './imageOperations/background-remover/background-remover.component';
 import { ChangeColorComponent } from './change-color/change-color.component';
 
@@ -38,12 +36,8 @@ import { ChangeColorComponent } from './change-color/change-color.component';
     RotateImagesComponent,
     BlurImagesComponent,
     ErrorpageComponent,
-    RotateoptionsComponent,
     BackgroundRemoverComponent,
     ChangeColorComponent,
-
-
-
   ],
   imports: [
     BrowserModule,
@@ -61,9 +55,7 @@ import { ChangeColorComponent } from './change-color/change-color.component';
     MatGridListModule,
     MatIconModule,
     MatTabsModule,
-    MatButtonModule
-
-
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  NgForm  } from '@angular/forms';
-import { faImage,faMaximize,faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons';
+import { faMaximize,faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons';
 
 
 import { ToastrService } from 'ngx-toastr';
@@ -11,24 +11,18 @@ import { GlobalService } from '../services/global.service';
   styleUrls: ['./resizeimages.component.css']
 })
 export class ResizeimagesComponent implements OnInit {
-  faArrowAltCircleDown=faArrowAltCircleDown;faImage=faImage;faMaximize=faMaximize;
-  imageUrl:any={};imagePath:any="";imageAlt:any="";myimage:any="";
+  faArrowAltCircleDown=faArrowAltCircleDown;faMaximize=faMaximize;
   file:any=null;
-  isSubmitted:boolean=false;
-  isUploaded:boolean=false;
-  imageStorage="";
+  isSubmitted:boolean=false;isUploaded:boolean=false;
   imageAfterResize="";
   dimensions= {
     "width": "",
     "height": ""
   }
-  myimgname:any="";
-  constructor(private _global:GlobalService,private toastr: ToastrService) { }
 
-  ngOnInit(): void {
-  }
+  constructor(private _global:GlobalService,private toastr: ToastrService) { }
+  ngOnInit(): void {}
   handleSubmit(form:NgForm){
-    setTimeout(() => {
       if(this.file != null){
         let formData = new FormData();
         formData.append("authimage",this.file[0]);
@@ -36,17 +30,12 @@ export class ResizeimagesComponent implements OnInit {
         formData.append("height",this.dimensions.height);
         this._global.ResizeImage(formData).subscribe(data=>{
             this.toastr.success(data.message)
-            this.imagePath=data.imagePath;
-            this.myimgname=data.imageName;
-            this.imageAlt=data.imageName;
             this.imageAfterResize=data.imageAfterResize;
             this.isSubmitted=true;
         },(err)=>{
           this.toastr.error("Or you dont enter width or height or both","Error Uploading Image, Noticed that, Image size should be less than 20MB and Image should be in jpeg,png,jpg,tiff format");
         })
       }
-    } , 3000);
-
   }
   handleUpload(e:any){
     this.file=e.target.files;

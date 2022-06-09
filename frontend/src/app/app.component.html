@@ -3,11 +3,12 @@
   <router-outlet>
   </router-outlet>
 </div>
-<button type="button" mat-fab color="primary" style="background-color: #004080;" id="btn-back-to-top" (click)="getValue()" >
-  <mat-icon svgIcon="arrowup"></mat-icon>
-</button>
-<div >
-  <h1 #btnbacktotop>ali</h1></div>
-<button (click)="getValue()">Get Value</button>
+
+<div class="m-5 position-fixed bottom-0 end-0" *ngIf="isScrolled">
+  <button type="button" mat-fab  style="background-color: #004080; margin-bottom:15px" id="btnbacktotop" #btnbacktotop (click)="getToTop()" >
+    <mat-icon svgIcon="arrowup"></mat-icon>
+  </button>
+</div>
+
 <app-footer></app-footer>
 

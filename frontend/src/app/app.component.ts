@@ -1,8 +1,10 @@
-import { Component, ElementRef, VERSION, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, VERSION, ViewChild } from '@angular/core';
 
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { IconsService } from './services/icons.service';
+import { DOCUMENT } from '@angular/common';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,20 +12,26 @@ import { IconsService } from './services/icons.service';
 })
 export class AppComponent {
   title = 'frontend';
+  isScrolled: boolean = false;
+  buttonPosition: number = 0;
+  ngOnInit() {
+  }
   //let mybutton = document.getElementById("btn-back-to-top");
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private _icons:IconsService){
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private _icons:IconsService,@Inject(DOCUMENT) public document: Document){
     iconRegistry.addSvgIconLiteral('arrowup', sanitizer.bypassSecurityTrustHtml(this._icons.ARROW_UP_ICON));
-  }
-  name = "Angular " + VERSION.major;
-  @ViewChild("btnbacktotop")
-  btnbacktotop!: ElementRef;
-  getValue() {
-    console.log(this.btnbacktotop.nativeElement.innerHTML);
-    //this.btnbacktotop.nativeElement.innerHTML
-  }
-  // 1. Select the div element using the id property
+    this.document.addEventListener('scroll', () => {
+      if (window.pageYOffset > 500) {
+        this.isScrolled = true;
+      } else {
+        this.isScrolled = false;
+      }
+    })
 
-  // (window.onscroll = function () {
-  //   scrollFunction();
-  // };)();
+  }
+
+  getToTop(){
+    window.scrollTo(0,0);
+  }
+
+
 }

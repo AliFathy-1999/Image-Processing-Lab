@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  NgForm  } from '@angular/forms';
-import { faImage,faRotate,faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { GlobalService } from 'src/app/services/global.service';
 import { IconsService } from '../services/icons.service';
@@ -12,14 +12,14 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./change-color.component.css']
 })
 export class ChangeColorComponent implements OnInit {
-  faArrowAltCircleDown=faArrowAltCircleDown;faImage=faImage;faRotate=faRotate;
-  imageAlt:any="";myimage:any="";
+
+  faArrowAltCircleDown=faArrowAltCircleDown;
   file:any=null;
   isSubmitted:boolean=false;
   tintoption:boolean=false;
   effectoption:boolean=false;
   isUploaded:boolean=false;
-  imageStorage="";
+
   imageAfterColor="";
   tintvalue:any="";
   isGray:boolean=false;
@@ -60,13 +60,9 @@ BrightnessValue:any;
     this.tintoption=false;
     this.effectoption=true;
     this.type="effect";
-
   }
   handlemyEffect(myeffect:any){
     this.effect=myeffect;
-
-
-
   }
   handleUpload(e:any){
     this.file=e.target.files;
@@ -74,7 +70,6 @@ BrightnessValue:any;
   }
 
   handleSubmit(form:NgForm){
-
     if(this.file != null){
     let formData = new FormData();
     formData.append("authimage",this.file[0]);
@@ -88,7 +83,6 @@ BrightnessValue:any;
     formData.append("brightness",this.BrightnessValue);
     this._global.ColorChange(formData).subscribe(data=>{
         this.toastr.success(data.message)
-        this.imageAlt=data.imageName;
         if(this.type=="tint"){
         this.imageAfterColor=data.imageNameT;
         }else if(this.type=="effect"){
@@ -109,7 +103,6 @@ BrightnessValue:any;
         }else if(this.effect=="brightness"){
           this.imageAfterColor=data.imageNameBrig;
         }
-
       }
       this.isSubmitted=true;
 
