@@ -1,2 +1,2 @@
-web : npm run all
+web : node index.js
 
