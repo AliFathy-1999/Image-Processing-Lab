@@ -158,11 +158,14 @@ class Image{
 
         const ColorImage = await sharp(myimagePath)
         switch(imgType){
+
             case 'tint':
+              var message = "";
                     var imageT = "./frontend/src/assets/TintImages/";
                     var imageAfterTint = `${myFileName}-tinted${ext}`
                     ColorImage.tint(imgTint).toFile(`${imageT}${imageAfterTint}`);
                     var isTinted = true;
+                    message = "Image Uploaded and Tint Color Changed Successfully";
                 break;
             case 'effect':
                 var message = "";

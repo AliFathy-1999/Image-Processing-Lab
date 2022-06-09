@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "dev": "cd frontend && ng s -o"
+    "dev": "cd frontend && ng s -o",
+    "all": "npm start | npm run dev"
   },
   "author": "Ali Ahmed Fathi",
   "license": "ISC",
