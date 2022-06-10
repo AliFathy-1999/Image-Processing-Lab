@@ -1,6 +1,6 @@
-<center>
+<div align="center">
 <img src="frontend/src/assets/Websitelogo.gif">
-</center>
+</div>
 
 # Image Processing Lab Project
 
