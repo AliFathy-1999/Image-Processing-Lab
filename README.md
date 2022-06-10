@@ -8,6 +8,6 @@
 
 # Project Description
 
-<p class="text-danger">This projects </p>
+<p style="color:red;">This projects </p>
 
 
