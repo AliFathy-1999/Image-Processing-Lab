@@ -1,6 +1,6 @@
-<div class="d-flex justify-content-center">
+<center>
 <img src="frontend/src/assets/Websitelogo.gif">
-</div>
+</center>
 
 # Image Processing Lab Project
 
