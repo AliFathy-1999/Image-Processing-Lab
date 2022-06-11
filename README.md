@@ -54,36 +54,36 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
 # How to Install and Run the Project
 
 
-<ol>
-<li> Clone this repo</li>
+
+ 1. Clone this repo
 
    ```sh
       git clone https://github.com/AliFathy-1999/Image-Processing-Lab.git
    ```
-<li>Install all dependencies needed in this project through</li>
+2. Install all dependencies needed in this project through</li>
 
-<ul>
-  <li>To install all Frontend Dependencies </li>
 
-    ```sh
+  * To install all Frontend Dependencies
+
+  ```sh
       cd frontend
       npm install
   ```
-   <li>To install all Backend Dependencies</li>
+  * To install all Backend Dependencies
 
-   <li>if you’re in your home folder</li>
+  * if you’re in your home folder
 
    ```sh
       npm install
    ```
-    
-  <li>if you’re in frontend folder and you want to go back</li> 
-  
+
+  * if you’re in frontend folder and you want to go back 
+
    ```sh
       cd ..
       npm install
    ```
-   </ul>
+
 </ol> 
 
     
