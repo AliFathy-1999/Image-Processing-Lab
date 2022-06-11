@@ -122,3 +122,12 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
     4. Click on download image button.
     
 <div align="center"><img src="frontend/src/assets/icons/rotate.png"></div>
+
+4. How to **Blur Image**:
+    1. Uploads image.
+    2. Enter value of **blur percentage**
+      * **You can enter Blur sigma value via clicking on Image or enter value manually.**
+    3. Click on Blur button to apply blur effect. 
+    4. Click on download image button.
+    
+<div align="center"><img src="frontend/src/assets/icons/blur.png"></div>
