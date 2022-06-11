@@ -63,10 +63,11 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
 2. Install all dependencies needed in this project through</li>
 
 
-  * To install all Frontend Dependencies
+  * To install all Frontend Dependencies & Install the CLI using the npm package manager:
 
   ```sh
       cd frontend
+      npm install -g @angular/cli
       npm install
   ```
   * To install all Backend Dependencies
