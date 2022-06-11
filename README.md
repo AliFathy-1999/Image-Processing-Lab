@@ -111,7 +111,7 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
     2. Click on Background Remove button to apply transparency. 
     3. Click on download image button.
 
-<div align="center"><img src="frontend/src/assets/icons/backgroundRemover.png"></div>
+<div align="right"><img src="frontend/src/assets/icons/backgroundRemover.png"></div>
 
 3. How to **Rotate Image**:
     1. Uploads image.
@@ -121,7 +121,7 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
     3. Click on Rotate button to apply rotation. 
     4. Click on download image button.
     
-<div align="center"><img src="frontend/src/assets/icons/rotate.png"></div>
+<div align="right"><img src="frontend/src/assets/icons/rotate.png"></div>
 
 4. How to **Blur Image**:
     1. Uploads image.
@@ -130,4 +130,4 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
     3. Click on Blur button to apply blur effect. 
     4. Click on download image button.
     
-<div align="center"><img src="frontend/src/assets/icons/blur.png"></div>
+<div align="right"><img src="frontend/src/assets/icons/blur.png"></div>
