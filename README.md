@@ -114,3 +114,10 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
 <div align="center"><img src="frontend/src/assets/icons/backgroundRemover.png"></div>
 
 3. How to **Rotate Image**:
+    1. Uploads image.
+    2. Select one of Options **(Simple or advanced)**
+      * **Simple option** Click on any image rotated or you can manually enter angle value.
+      * **Advanced option** Set the angle by slider and Set the Background Color or you can ignore it.
+    3. Click on Rotate button to apply rotation. 
+    4. Click on download image button.
+    
