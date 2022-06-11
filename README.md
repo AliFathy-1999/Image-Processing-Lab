@@ -1,3 +1,6 @@
+<html>
+<head></head>
+<body>
 <div align="center">
   <img src="frontend/src/assets/Websitelogo.gif">
   <h3>Image Processing Lab README</h3>
@@ -17,9 +20,41 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
 
 <ul>
   <li>NodeJS</li>
-  <li>Express Framework</li>
+  <li>AngularJS</li>
   <li>HTML</li>
   <li>CSS</li>
-  <li>Bootstrap</li>
-  <li>AngularJS</li>  
+  <li>Bootstrap</li>  
 </ul>
+
+## Modules Used in Backend
+
+<ul>
+  <li>Express</li>
+  <li>cors</li>
+  <li>axios</li>
+  <li>dotenv</li>
+  <li>form-data</li>  
+  <li>multer</li>
+  <li>remove.bg</li>
+  <li>sharp</li> 
+</ul>
+
+## Modules Used in Frontend
+
+<ul>
+  <li>ngx-toastr</li>
+  <li>font-awesome</li>
+  <li>tslibs</li>
+  <li>zone.js</li>
+  <li>angular materials</li>  
+</ul>
+
+# How to Install and Run the Project
+
+## You can clone this repositorie
+
+
+  <div style="background-color:red;">ali</div>
+  
+  </body>
+</html>
