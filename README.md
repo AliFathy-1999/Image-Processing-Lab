@@ -56,10 +56,12 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
 
 <ol>
 <li> Clone this repo</li>
+
    ```sh
       git clone https://github.com/AliFathy-1999/Image-Processing-Lab.git
    ```
 <li>Install all dependencies needed in this project through</li>
+
    ```sh
       npm install
    ```
