@@ -165,5 +165,8 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
 
       * **Brightness Effect** : **Enter Brightness value (0-3.5)** and Click on Apply Brightness button.
       <div align="center"><img src="frontend/src/assets/EffectImages/brightness.jpg" width="200"></div> 
-      
+
     5. Click on download image button.
+
+# License
+Licensed under the [MIT License](https://github.com/AliFathy-1999/Image-Processing-Lab/blob/master/LICENSE)
