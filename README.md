@@ -130,6 +130,6 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
     3. Click on Blur button to apply blur effect. 
     4. Click on download image button.
     
-<img src="frontend/src/assets/icons/blur.png">{:style="float: right;margin-right: 7px;margin-top: 7px;"}
+<div style="float: right"><img src="frontend/src/assets/icons/blur.png"></div>
 
 
