@@ -136,7 +136,7 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
 
 ## Change Color
 
-1. How to **Change Color** :
+2. How to **Change Color** :
     1. Uploads image.
     2. Select one of settings **Tint or Effect Setting** :
     3.  **Tint Setting** Choose the colour you want from **Color Pick**.
@@ -165,4 +165,4 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
 
       * **Brightness Effect** : **Enter Brightness value (0-3.5)** and Click on Apply Brightness button.
       <div align="center"><img src="frontend/src/assets/EffectImages/brightness.jpg" width="200"></div> 
-    5. Click on download image button.
+      5. Click on download image button.
