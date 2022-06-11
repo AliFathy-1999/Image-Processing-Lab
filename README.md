@@ -97,7 +97,9 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
 
 * Make Sure that you upload image of type **tiff, png, jpg and jpeg** and maxmium size is **20 migabytes** 
 
-1. How to **Resize Image**:
+## Image Operations
+
+1. How to **Resize Image** :
     1. Uploads image.
     2. Enter image width and height **width and height values between 10 and 1500**. 
     3. Click on Resize Image button to apply resize. 
@@ -106,14 +108,14 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
 
 <div align="center"><img src="frontend/src/assets/icons/resize.png"></div>
 
-2. How to **Remove Background** from image (Make image transparency):
+2. How to **Remove Background** from image (Make image transparency) :
     1. Uploads image.
     2. Click on Background Remove button to apply transparency. 
     3. Click on download image button.
 
-<div align="right"><img src="frontend/src/assets/icons/backgroundRemover.png"></div>
+<div align="center"><img src="frontend/src/assets/icons/backgroundRemover.png"></div>
 
-3. How to **Rotate Image**:
+3. How to **Rotate Image** :
     1. Uploads image.
     2. Select one of Options **(Simple or advanced)**
       * **Simple option** Click on any image rotated or you can manually enter angle value.
@@ -121,15 +123,33 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
     3. Click on Rotate button to apply rotation. 
     4. Click on download image button.
     
-<div align="right"><img src="frontend/src/assets/icons/rotate.png"></div>
+<div align="center"><img src="frontend/src/assets/icons/rotate.png"></div>
 
-4. How to **Blur Image**:
+4. How to **Blur Image** :
     1. Uploads image.
     2. Enter value of **blur percentage**
       * **You can enter Blur sigma value via clicking on Image or enter value manually.**
     3. Click on Blur button to apply blur effect. 
     4. Click on download image button.
     
-<div style="float: right"><img src="frontend/src/assets/icons/blur.png"></div>
+<div align="center"><img src="frontend/src/assets/icons/blur.png"></div>
 
-<img align="right" width="100" height="100" src="frontend/src/assets/icons/blur.png">
+## Change Color
+
+1. How to **Change Color** :
+    1. Uploads image.
+    2. Select one of settings **Tint or Effect Setting** :
+    3.  **Tint Setting** Choose the colour you want from **Color Pick**.
+        <div align="center"><img src="frontend/src/assets/icons/tint.png"></div>
+    4. **Effect Setting**  Select Effect you want :
+      * **GrayScale Effect** : Click on Apply GrayScale button. 
+      <div align="center"><img src="frontend/src/assets/EffectImages/GrayScale.jpg" width="200"></div>
+
+      * **CMYK Effect** :  Click on Cmyk in the slider and Click Apply CMYK button.
+      <div align="center"><img src="frontend/src/assets/EffectImages/cmyk.jpg" width="200"></div> 
+
+      * **Black and White Effect** : Click on Apply B&W button.
+      <div align="center"><img src="frontend/src/assets/EffectImages/bw.jpg" width="200"></div> 
+
+    3. Click on Apply button to apply Effect. 
+    4. Click on download image button.
