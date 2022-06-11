@@ -68,15 +68,11 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
       cd frontend
       npm install
    ```
-   To install all Backend Dependencies
-
-   if you’re in your home folder
    ```sh
       npm install
    ```
-      if you’re in frontend folder and you want to go back 
    ```sh
-    cd ..
+      cd ..
       npm install
    ```
 </ol> 
