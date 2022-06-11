@@ -85,6 +85,9 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
       npm install
    ```
 
-</ol> 
+3. Run The Project
+   
 
-    
+      ```sh
+      npm run all
+   ``` 
