@@ -1,7 +1,7 @@
 {
   "name": "image-processing-project",
   "version": "1.0.0",
-  "description": "Resize Images using NodeJS and AngularJS ",
+  "description": "Image Processing Lab using NodeJS and AngularJS ",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
