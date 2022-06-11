@@ -62,15 +62,14 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
    ```
 <li>Install all dependencies needed in this project through</li>
 
-  To install all Frontend Dependencies 
+  <p>To install all Frontend Dependencies</p> 
 
      ```sh
       cd frontend
       npm install
-   ```
    ```sh
       npm install
-   ```
+  
    ```sh
       cd ..
       npm install
