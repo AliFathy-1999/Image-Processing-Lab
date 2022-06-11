@@ -1,6 +1,3 @@
-<html>
-<head></head>
-<body>
 <div align="center">
   <img src="frontend/src/assets/Websitelogo.gif">
   <h3>Image Processing Lab README</h3>
@@ -49,12 +46,23 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
   <li>angular materials</li>  
 </ul>
 
+## Prerequisites   
+
+ Download and setup npm and nodejs
+
+
 # How to Install and Run the Project
 
-## You can clone this repositorie
 
+<ol>
+<li> Clone this repo</li>
+   ```sh
+      git clone https://github.com/AliFathy-1999/Image-Processing-Lab.git
+   ```
+<li>Install all dependencies needed in this project through</li>
+   ```sh
+      npm install
+   ```
+</ol> 
 
-  <div style="background-color:red;">ali</div>
-  
-  </body>
-</html>
+    
