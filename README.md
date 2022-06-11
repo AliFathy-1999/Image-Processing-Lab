@@ -151,5 +151,18 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
       * **Black and White Effect** : Click on Apply B&W button.
       <div align="center"><img src="frontend/src/assets/EffectImages/bw.jpg" width="200"></div> 
 
-    3. Click on Apply button to apply Effect. 
-    4. Click on download image button.
+      * **sharpen Filter** : **Enter Sharpness value** and Click on Apply Sharpness button.
+      <div align="center"><img src="frontend/src/assets/EffectImages/sharpen.jpg" width="200"></div> 
+
+      * **sharpen Filter** : **Enter Median value** and Click on Apply Median button.
+      <div align="center"><img src="frontend/src/assets/EffectImages/median.jpg" width="200"></div> 
+
+      * **sharpen Filter** : Click on **Apply Normalise** button.
+      <div align="center"><img src="frontend/src/assets/EffectImages/Normalise.jpg" width="200"></div> 
+
+      * **Histogram Filter** : **Enter Histogram First and Second values (0-20)** and Click on Apply Equalize button.
+      <div align="center"><img src="frontend/src/assets/EffectImages/histogram.jpg" width="200"></div> 
+
+      * **Brightness Effect** : **Enter Brightness value (0-3.5)** and Click on Apply Brightness button.
+      <div align="center"><img src="frontend/src/assets/EffectImages/brightness.jpg" width="200"></div> 
+    3. Click on download image button.
