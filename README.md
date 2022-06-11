@@ -121,3 +121,4 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
     3. Click on Rotate button to apply rotation. 
     4. Click on download image button.
     
+<div align="center"><img src="frontend/src/assets/icons/rotate.png"></div>
