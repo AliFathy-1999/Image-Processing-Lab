@@ -102,7 +102,7 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
     3. Click on Resize Image button to apply resize. 
     4. Click on download image button.
 
-<img src="frontend/src/assets/icons/icons8-resize-96.png">
+<img src="frontend/src/assets/icons8-resize-96.png">
 
 2. How to **Remove Background** from image (Make image transparency):
     1. Uploads image.
