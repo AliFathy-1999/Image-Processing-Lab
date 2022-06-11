@@ -95,15 +95,16 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
 # How to Use the Project
 
 * Make Sure that you upload image of type **tiff, png, jpg and jpeg** and maxmium size is **20 migabytes** 
-1. How to **Resize Image**: 
 
+1. How to **Resize Image**:
     1. Uploads image.
     2. Enter image width and height **width and height values between 10 and 1500**. 
     3. Click on Resize Image button to apply resize. 
     4. Click on download image button.
 
 2. How to **Remove Background** from image (Make image transparency):
-
     1. Uploads image.
     2. Click on Background Remove button to apply transparency. 
     3. Click on download image button.
+
+3. How to **Rotate Image**:
