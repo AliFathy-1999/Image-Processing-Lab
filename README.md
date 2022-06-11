@@ -67,10 +67,10 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
      ```sh
       cd frontend
       npm install
-   ```sh
+
       npm install
   
-   ```sh
+
       cd ..
       npm install
    ```
