@@ -132,4 +132,4 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
     
 <div style="float: right"><img src="frontend/src/assets/icons/blur.png"></div>
 
-![alt text](<img src="frontend/src/assets/icons/blur.png">)
+<img align="right" width="100" height="100" src="frontend/src/assets/icons/blur.png">
