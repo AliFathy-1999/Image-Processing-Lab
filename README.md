@@ -88,7 +88,8 @@ It is used in **Resizing, Rotating, Removing Background, Bluring images**.It hel
 3. Run The Project
    
 * Make sure you’re in your **home folder** 
-      ```sh
+  
+    ```sh
       npm run all
    ``` 
 
